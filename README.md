@@ -12,4 +12,11 @@ To search for an item:
 If you have the item then at the bottom a text will appear saying "The item is in the list" with a yellow background else it will say "The item doesn't exist in the list" with a red background.
 Then to clear your seach you just need to press the "Clear Search" button.
 
+I think it would be useful for Epic Games to add a search system in Fortnite Save The World but until then you can just log your stuff in this app. Also i don't get any of information anything you do with the app. It purely operates in your computer only.
+
 (All the items on the list are saved on a text file in "/dist/stuff.txt")
+
+==============================================
+Updates will be uploaded when the program is ready and appear to run correctly and have no bugs. If it appears to have an issue then I would be happy to know it and take advice about fixing it. Please keep in mind that i am not a professional coder i just did this for fun and thought it was useful for the game.
+
+==============================================
