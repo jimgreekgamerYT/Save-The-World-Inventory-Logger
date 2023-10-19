@@ -31,12 +31,12 @@ def clear_search():
     search_result.config(text="", bg="white")
 
 def save_to_file(item):
-    with open("C:/Users/jim/Desktop/STW_stuff/dist/stuff.txt", "a") as file:
+    with open("/Desktop/STW_Logger/dist/stuff.txt", "a") as file:
         file.write(item + "\n")
 
 def load_from_file():
     try:
-        with open("C:/Users/jim/Desktop/STW_stuff/dist/stuff.txt", "r") as file:
+        with open("/Desktop/STW_Logger/dist/stuff.txt", "r") as file:
             for line in file:
                 item = line.strip()
                 items.append(item)
