@@ -1,12 +1,13 @@
 import tkinter as tk
+import os
 
 def add_item():
     item = entry.get()
     if item:
-        items.append(item)  # Add the item to the list
+        items.append(item)
         listbox.insert(tk.END, item)
         entry.delete(0, tk.END)
-        save_to_file(item)  # Save the item to the file
+        save_to_file(item)
 
 def search_item():
     query = search_entry.get().lower()
@@ -31,51 +32,55 @@ def clear_search():
     search_result.config(text="", bg="white")
 
 def save_to_file(item):
-    with open("/Desktop/STW_Logger/dist/stuff.txt", "a") as file:
-        file.write(item + "\n")
+    try:
+        with open(file_path, "a") as file:
+            file.write(item + "\n")
+    except Exception as e:
+        print(f"Error saving item to file: {e}")
 
 def load_from_file():
-    try:
-        with open("/Desktop/STW_Logger/dist/stuff.txt", "r") as file:
+    if os.path.exists(file_path):
+        with open(file_path, "r") as file:
             for line in file:
                 item = line.strip()
                 items.append(item)
                 listbox.insert(tk.END, item)
-    except FileNotFoundError:
-        pass
+
+# File path
+file_path = os.path.join(os.path.expanduser('~'), "Desktop", "STW_Logger", "dist", "stuff.txt")
 
 # Create the main window
 root = tk.Tk()
-root.title("Save The World Inverntory Logger")
+root.title("Save The World Inventory Logger")
 root.geometry("400x400")
 
 # Create a listbox to display items
 listbox = tk.Listbox(root)
-listbox.pack(fill=tk.BOTH, expand=True)
+listbox.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
 # Create an entry widget for adding items
 entry = tk.Entry(root)
-entry.pack(fill=tk.X)
+entry.pack(fill=tk.X, padx=10, pady=5)
 
 # Create a button to add items to the list
 add_button = tk.Button(root, text="Add Item", command=add_item)
-add_button.pack()
+add_button.pack(padx=10, pady=5)
 
 # Create an entry widget for searching items
 search_entry = tk.Entry(root)
-search_entry.pack(fill=tk.X)
+search_entry.pack(fill=tk.X, padx=10, pady=5)
 
 # Create a button to search items in the list
 search_button = tk.Button(root, text="Search", command=search_item)
-search_button.pack()
+search_button.pack(padx=10, pady=5)
 
 # Create a button to clear the search
 clear_button = tk.Button(root, text="Clear Search", command=clear_search)
-clear_button.pack()
+clear_button.pack(padx=10, pady=5)
 
 # Create a label to display search results
 search_result = tk.Label(root, text="", bg="white")
-search_result.pack(fill=tk.X)
+search_result.pack(fill=tk.X, padx=10, pady=5)
 
 # Initialize a list of items
 items = []
